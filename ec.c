@@ -2,8 +2,8 @@
 #include<string.h>
 void known_functions(char[], char[], int);
 
-int main (int args, char *f[]) {
-	FILE *pToFIle = fopen(f[1], "r");
+int main (int args, char *filename[]) {
+	FILE *pToFIle = fopen(filename[1], "r");
 	int count, functions_count = 0;
 
 	char input[512], functions[512];
@@ -11,16 +11,21 @@ int main (int args, char *f[]) {
 	//while (fgets(input, 512, pToFIle)) {printf("%ld\n", strlen(input));}
 	
 	while ( fgets( input, 512, pToFIle) ) {
+		//printf("working\n");
+		memset(functions, '\0', strlen(functions));
+		functions_count = 0;
 		for (count = 0; count < strlen(input); count++) {
-			if ( input[count] != '\0') {
-				if (input[count] >= 97 && input[count] <= 122) {
-					//printf("working");
+			//printf("working");
+			if (input[count] != '\0') {
+				if (input[count] != ' ') {
+					//printf("working\n");
 						functions[functions_count] = input[count];
 						functions_count++;
 				}
-				else if (input[count] == ' ') {
+				else if (input[count] == ' ' && input[count - 1] != '"' && input[count + 1] == '"') {
 					//printf("working");
 						known_functions(functions, input, count);
+						break;
 				}
 			}
 		}
@@ -54,10 +59,8 @@ void known_functions(char functions[], char input[], int count) {
 				}
 			}
 		}
-		
-			
 
-		printf("%s", functions);
+		printf("%s\n", functions);
 
 	}
 }
