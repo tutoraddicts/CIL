@@ -2,9 +2,8 @@
 #include<string.h>
 void known_functions(char[], char[], int);
 
-int main () {
-
-	FILE *pToFIle = fopen("net", "r");
+int main (int args, char *f[]) {
+	FILE *pToFIle = fopen(f[1], "r");
 	int count, functions_count = 0;
 
 	char input[512], functions[512];
