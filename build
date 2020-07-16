@@ -1,0 +1,1 @@
+g++ -o -o2 -o3 ./src/*.c ./src/Util/*.c -o ec
