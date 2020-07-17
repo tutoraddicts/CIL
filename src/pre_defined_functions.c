@@ -42,7 +42,7 @@ void ConsolePrintFunc(char content[], int index)
             else if (content[i] == '/' && content[i+1] == 't')
             {
                 i += 2;
-                printf("\n");
+                printf("\t");
                 continue;
             }
             printf("%c", content[i]);
