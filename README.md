@@ -15,6 +15,6 @@ Want to test ?
 What can you do right now ?
 
     1. For now you have only print function to print some string in console
-        Syntax -> print "string" (/n to add next line)
+        Syntax -> print "string" (/n to add next line and /t for tab)
     
 Thanks for look over the repo :) Have a nice day
