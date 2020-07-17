@@ -22,21 +22,24 @@ void ConsolePrintFunc(char content[], int index)
     // printf("in print");
     RemoveStringSpaces(content, index);
     int sizeOFData = strlen(content);
-    char data[512] = "";
-
+   
     if (content[0] != '"')
         printf ("Invalid Syntax");
     else if (content[0] == '"' && content[1] == '"')
         printf("");
     else
     {
-        int i = 0;
-        for (i = 1; i < sizeOFData-1; i++)
+        for (int i = 1; i < sizeOFData-1; i++)
         {
             if (content[i] == '"')
                 break;
-            data[i-1] = content[i];
+            else if (content[i] == '/' && content[i+1] == 'n')
+            {
+                i += 2;
+                printf("\n");
+                continue;
+            }
+            printf("%c", content[i]);
         }
     }
-    printf("%s", data);
 }
