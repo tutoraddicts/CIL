@@ -12,6 +12,7 @@
 #include<string.h>
 
 #include "pre_defined_functions.h"
+#include "identify_function.h"
 #include "Util/local_string.h"
 
 void known_functions(char[], char[], int);

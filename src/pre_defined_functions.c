@@ -1,27 +1,29 @@
 #include "pre_defined_functions.h"
 
 void RemoveStringSpaces(char content[],int index)
-{
-    int conTentSize = (sizeof(content)/sizeof(char)); // calculating total size of our string
-    
+{    
     while ( content[index] == ' ') // removing spaces after the function
         index++;    
 
-    int sizeOfData = (sizeof(content)/sizeof(char))-index;
-    char data[sizeOfData];
-    int i = 0;
-    for (i = 0; i < sizeOfData; i++)
-        data[i] = content[index++];
+    int sizeOfData = strlen(content)-index;
+    char data[512] = "";
 
-    index = i+1;
-    content = (char*) malloc(sizeof(data));
+    for (int i = 0; i < sizeOfData; i++)
+    {
+        data[i] = content[index];
+        index++;
+    }
+
 	strcpy(content, data);
 }
 
 void ConsolePrintFunc(char content[], int index)
 {
+    // printf("in print");
     RemoveStringSpaces(content, index);
-    int sizeOFData = sizeof(content)/sizeof(char);
+    int sizeOFData = strlen(content);
+    char data[512] = "";
+
     if (content[0] != '"')
         printf ("Invalid Syntax");
     else if (content[0] == '"' && content[1] == '"')
@@ -29,12 +31,12 @@ void ConsolePrintFunc(char content[], int index)
     else
     {
         int i = 0;
-        for (i = 1; i < sizeOFData; i++)
+        for (i = 1; i < sizeOFData-1; i++)
         {
             if (content[i] == '"')
                 break;
-            content[i-1] = content[i];
+            data[i-1] = content[i];
         }
     }
-    printf("%s", content);
+    printf("%s", data);
 }

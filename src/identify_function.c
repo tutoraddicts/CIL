@@ -6,7 +6,9 @@ funcIndex IdentifyFunction(char functionName[])
     switch (ch)
     {
     case 'p':
+        // printf("found P");
         return PTypeFunctions(functionName);
+
         break;
     default:
         return INVALID_FUNCTION;
@@ -16,8 +18,8 @@ funcIndex IdentifyFunction(char functionName[])
 
 funcIndex PTypeFunctions(char functionName[])
 {
-    if (strcmp(functionName, "print"))
-        return console_print_function;
+    if (strcmp(functionName, preDefFunc.console_print_function) == 0)
+         return console_print_function;
     else
         return INVALID_FUNCTION;
     
