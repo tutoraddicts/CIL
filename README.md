@@ -14,6 +14,7 @@ Want to test ?
 
 What can you do right now ?
 
-    1. print any workds (Syntax -> print "you want to say")
+    1. For now you have only print function to print some string in console
+        Syntax -> print "string" (/n to add next line)
     
 Thanks for look over the repo :) Have a nice day

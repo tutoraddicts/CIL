@@ -39,6 +39,12 @@ void ConsolePrintFunc(char content[], int index)
                 printf("\n");
                 continue;
             }
+            else if (content[i] == '/' && content[i+1] == 't')
+            {
+                i += 2;
+                printf("\n");
+                continue;
+            }
             printf("%c", content[i]);
         }
     }
