@@ -1,17 +1,19 @@
 #include "ec_main.h"
  
-int main (int args, char *filename[]) 
+int main (int args, char **filename) 
 {
+	if (args < 2) return printf(erroMassage)?0:1; // this means user did not pass any file
+
 	FILE *pToFIle = fopen(filename[1], "r"); // Just like others we are getting the file name which one we want to execute and reading that :P
 	
 	// printf(" started ");
-	char input[512] = "",
-		functions[512] = "";
+	char *input = (char*)malloc(sizeof(char)*512),
+		*functions = (char*)malloc(sizeof(char)*512);
 	
 	while ( fgets( input, 512, pToFIle) ) // Get input from the file line by line
 	{ 
 		int count = 0;
-		memset(functions, '\0', strlen(functions)); // cleaning up the memory of functions for some retarded erroes
+		//  lol joke memset(functions, '\0', strlen(functions)); // cleaning up the memory of functions for some retarded erroes
 		
 		int inputLenth = strlen(input); 
 
@@ -19,9 +21,9 @@ int main (int args, char *filename[])
 		// We Need to remove extra Spaces from front
 		RemoveStringSpaces(input, 0);
 	
-		inputLenth = strlen(input);
+		inputLenth = stringLenth(input);
 		
-		// Loop will continue to check for any kind of space between if spave we know that we found our function
+		//Loop will continue to check for any kind of space between if spave we know that we found our function
 		for (count = 0; count < inputLenth; count++) 
 		{
 			printf("");
@@ -35,6 +37,10 @@ int main (int args, char *filename[])
 	}
 
 	fclose(pToFIle);
+
+	free(input);
+	free(functions);
+
 	return 0;
 }
 
@@ -51,5 +57,6 @@ void known_functions(char functions[], char input[], int count) {
 			break;
 		default:
 			return;
+			break;
 	}
 }

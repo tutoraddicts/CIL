@@ -1,4 +1,6 @@
 # extence-c
+Lol this is brocken now thinking to stop working on this because I want to work on a Json copy from scratch :(
+
 Want to mixe up c and shell script which will look like shell script and act like kinda python and c++ hope will go well :);
 
 How you can work in this ? 

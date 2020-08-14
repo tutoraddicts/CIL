@@ -13,7 +13,9 @@
 
 #include "pre_defined_functions.h"
 #include "identify_function.h"
+#include "Util/string.h"
 
+const char *erroMassage = "No File Inserted\n";
 
 void known_functions(char[], char[], int);
 

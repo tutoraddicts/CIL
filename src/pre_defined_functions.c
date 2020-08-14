@@ -1,22 +1,5 @@
 #include "pre_defined_functions.h"
 
-void RemoveStringSpaces(char content[],int index)
-{    
-    while ( content[index] == ' ') // removing spaces after the function
-        index++;    
-
-    int sizeOfData = strlen(content)-index;
-    char data[512] = "";
-
-    for (int i = 0; i < sizeOfData; i++)
-    {
-        data[i] = content[index];
-        index++;
-    }
-
-	strcpy(content, data);
-}
-
 void ConsolePrintFunc(char content[], int index)
 {
     // printf("in print");
@@ -48,4 +31,10 @@ void ConsolePrintFunc(char content[], int index)
             printf("%c", content[i]);
         }
     }
+}
+
+void setup_predef_functions(PreDefinedFunctions* _preDefF){
+
+    _preDefF->console_print_function = (char*)malloc(6*sizeof(char));
+    _preDefF->console_print_function = "print";
 }

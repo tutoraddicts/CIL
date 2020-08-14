@@ -16,6 +16,6 @@
     funcIndex IdentifyFunction(char[]); 
     
     // Group the functions with there frst letter
-    funcIndex PTypeFunctions(char[]);
+    funcIndex PTypeFunctions(char[], PreDefinedFunctions*);
 
 #endif
