@@ -1,8 +1,8 @@
 #include "ec_main.h"
- 
+
 int main (int args, char **filename) 
 {
-	if (args < 2) return printf(erroMassage)?0:1; // this means user did not pass any file
+	if (args < 2) return printf(NoArg); // this means user did not pass any file
 
 	FILE *pToFIle = fopen(filename[1], "r"); // Just like others we are getting the file name which one we want to execute and reading that :P
 	
@@ -19,14 +19,14 @@ int main (int args, char **filename)
 
 		// realloc(input, inputLenth*sizeof(char));
 		// We Need to remove extra Spaces from front
-		RemoveStringSpaces(input, 0);
+		input = RemoveSpaces(input, 0);
 	
 		inputLenth = stringLenth(input);
 		
 		//Loop will continue to check for any kind of space between if spave we know that we found our function
 		for (count = 0; count < inputLenth; count++) 
 		{
-			printf("");
+			// printf("");
 			if (input[count] != ' ') 
 				functions[count] = input[count];
 			else {
@@ -38,13 +38,13 @@ int main (int args, char **filename)
 
 	fclose(pToFIle);
 
-	free(input);
-	free(functions);
+	// free(input);
+	// free(functions);
 
 	return 0;
 }
 
-void known_functions(char functions[], char input[], int count) {
+void known_functions(char *functions, char *input, int count) {
 	int new_count, temp_count = 0, empty = 0;
 
 	switch ( IdentifyFunction(functions) )
@@ -55,8 +55,10 @@ void known_functions(char functions[], char input[], int count) {
 		case console_print_function:
 			ConsolePrintFunc(input, count);
 			break;
+		case create_varaibel:
+			// create a variable
+			break;
 		default:
-			return;
 			break;
 	}
 }

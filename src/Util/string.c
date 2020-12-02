@@ -1,30 +1,23 @@
 #include "string.h"
 
-void RemoveStringSpaces(char content[], int index)
-{    
-    while ( content[index] == ' ') // removing spaces from front
-        index++;    
-
-    int sizeOfData = strlen(content)-index;
-    char data[512] = "";
-    int i = 0;
-    while (content[index])
-    {
-        data[i++] = content[index++];
-    }
-
-    sizeOfData = stringLenth(data);
-    // content = (char*)malloc(sizeof(char)*sizeOfData);
-	strcpy(content, data);
-
-    // sizeOfData = stringLenth(content);
-    // content = (char*)realloc(content, sizeOfData*sizeof(char));
-    // printf(content);
+String New_String(size_t size){
+    return (String)malloc(sizeof(char)*size);
 }
 
-int stringLenth(char* CString){
-    int size = 0,
-        index = 0;
-    while ( *(CString+(index++)) )  size++;
-    return size;
+String RemoveSpaces(String string, int index)
+{    
+    while ( *(string+(index++)) == ' '); // removing spaces from front      
+    string = string + index - 1;
+    return string;
+}
+
+int stringLenth(String CString){
+    if (*CString) return 1 + stringLenth(CString+1);
+    else return 0;
+}
+
+void StringCopy(String __src, String __dst){
+    size_t __size = stringLenth(__src);
+    __dst = (String)malloc(__size);
+    memcpy(__dst, __src, __size);
 }

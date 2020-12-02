@@ -1,9 +1,9 @@
 #include "pre_defined_functions.h"
 
-void ConsolePrintFunc(char content[], int index)
+void ConsolePrintFunc(char *content, int index)
 {
     // printf("in print");
-    RemoveStringSpaces(content, index);
+    content = RemoveSpaces(content, index);
     int sizeOFData = strlen(content);
    
     if (content[0] != '"')
@@ -31,6 +31,10 @@ void ConsolePrintFunc(char content[], int index)
             printf("%c", content[i]);
         }
     }
+}
+
+void CreateVariabel(char* varName, char* value){
+    
 }
 
 void setup_predef_functions(PreDefinedFunctions* _preDefF){

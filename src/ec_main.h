@@ -15,7 +15,7 @@
 #include "identify_function.h"
 #include "Util/string.h"
 
-const char *erroMassage = "No File Inserted\n";
+const char *NoArg = "No File Inserted\n";
 
 void known_functions(char[], char[], int);
 

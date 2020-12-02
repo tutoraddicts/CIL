@@ -23,12 +23,12 @@ typedef struct PreDefinedFunctions PreDefinedFunctions;
 enum function_Indexes{
     INVALID_FUNCTION = -1,
     console_print_function = 0,
+    create_varaibel = 1,
 };
 
 // pre defined functions 
 
 void ConsolePrintFunc(char[], int);
-void RemoveStringSpaces(char[],int);
 void setup_predef_functions(PreDefinedFunctions*);
 
 #endif
