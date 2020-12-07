@@ -1,44 +1,73 @@
 #include "pre_defined_functions.h"
+#include "Variable/FindVariable.h"
 
-void ConsolePrintFunc(char *content, int index)
+static int print(String, int);
+
+void ConsolePrintFunc(String content, int index)
 {
-    // printf("in print");
+    String tmp;
     content = RemoveSpaces(content, index);
-    int sizeOFData = strlen(content);
-   
-    if (content[0] != '"')
-        printf ("Invalid Syntax");
-    else if (content[0] == '"' && content[1] == '"')
-        printf("");
-    else
+    int sizeOFData = strlen(content)-1;
+
+    for (int i = 0; i < sizeOFData; i++)
     {
-        for (int i = 1; i < sizeOFData-1; i++)
+        switch (content[i])
         {
-            if (content[i] == '"')
+            case '"':
+                ++i;
+                while (content[i] != '"')
+                {
+                    i = print(content, i);
+                    ++i;
+                }
+                if (content[i+1] == ' '){
+                    ++i;
+                    while (content[i+1] != '+' && i < sizeOFData) ++i;
+                }
+        
+            break;
+            
+            case '+':
+                while (content[i+1] == ' ') ++i;
+                
+            break;
+
+            case ' ':
                 break;
-            else if (content[i] == '/' && content[i+1] == 'n')
-            {
-                i += 2;
-                printf("\n");
-                continue;
-            }
-            else if (content[i] == '/' && content[i+1] == 't')
-            {
-                i += 2;
-                printf("\t");
-                continue;
-            }
-            printf("%c", content[i]);
+            default :
+                tmp = FindVar(content, &i);
+                if ( !IsStringEmpty(tmp) ){
+                    printf("%s", tmp);
+                } 
+            break;
         }
     }
 }
 
-void CreateVariabel(char* varName, char* value){
+static int print(String data, int index){
+    switch (data[index])
+    {
+        case '/':
+                
+            if (data[index+1] == 'n'){
+                ++index;
+                printf("\n");
+            }
+            else if (data[index+1] == 't'){
+                ++index;
+                printf("\t");
+            }
+            else 
+                printf("%c", data[index]);
+
+        break;
     
-}
+        default:
 
-void setup_predef_functions(PreDefinedFunctions* _preDefF){
+            printf("%c", data[index]);
 
-    _preDefF->console_print_function = (char*)malloc(6*sizeof(char));
-    _preDefF->console_print_function = "print";
+        break;
+    }
+
+    return index;
 }

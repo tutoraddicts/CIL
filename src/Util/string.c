@@ -11,13 +11,22 @@ String RemoveSpaces(String string, int index)
     return string;
 }
 
-int stringLenth(String CString){
+int stringLenth(const String CString){
+    if(CString == NULL) return 0;
     if (*CString) return 1 + stringLenth(CString+1);
     else return 0;
 }
 
-void StringCopy(String __src, String __dst){
-    size_t __size = stringLenth(__src);
-    __dst = (String)malloc(__size);
-    memcpy(__dst, __src, __size);
+String StringCopy(String __src,String __dst, int __size){
+    __dst = (String)realloc(__dst, __size);
+    for (int i = 0; i < __size; i++)
+    {
+        *(__dst+i) = *(__src+i);
+    }
+    return __dst;
+    // memcpy(__dst, __src, __size);
+}
+
+short IsStringEmpty(String __string){
+    return (*__string == NULL);
 }

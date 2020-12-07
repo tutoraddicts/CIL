@@ -14,10 +14,10 @@
 #include "pre_defined_functions.h"
 #include "identify_function.h"
 #include "Util/string.h"
+#include "Variable/CreateVariable.h"
+#include "Definations.h"
 
 const char *NoArg = "No File Inserted\n";
-
-void known_functions(char[], char[], int);
 
 
 #endif

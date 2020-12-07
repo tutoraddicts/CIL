@@ -5,7 +5,8 @@
 #include <stdio.h>
 
 #define New New_
-typedef char* String;
+typedef char* CString;
+typedef CString String;
 
 /* 
     allocate memory according to the size you send
@@ -18,10 +19,16 @@ String RemoveSpaces(String ,int); // function to remove spaces in the string
 /* 
     Return String Lenth 
  */
-int stringLenth(String);
+int stringLenth( const String);
 /*
     __src > Source String
     __dst > Destination String
     __size > size of the src
  */
-void StringCopy(String __src, String __dst);
+String StringCopy(String __src,String __dst, int __size);
+
+/*
+ Return 1 if empty 
+ Return 0 if NotEmpty
+ */
+short IsStringEmpty(String __string);

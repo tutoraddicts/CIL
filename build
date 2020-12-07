@@ -1,1 +1,5 @@
-gcc ./src/*.c ./src/Util/*.c -o ec
+#!/bin/sh
+#!/bin/zsh
+
+
+gcc ./src/*.c ./src/Util/*.c ./src/Variable/*.c -o ec
