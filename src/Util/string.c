@@ -1,32 +1,37 @@
 #include "string.h"
 
-String New_String(size_t size){
+STRING_STD_C String New_String(size_t size){
     return (String)malloc(sizeof(char)*size);
 }
 
-String RemoveSpaces(String string, int index)
+STRING_STD_C String RemoveSpaces(String string)
 {    
-    while ( *(string+(index++)) == ' '); // removing spaces from front      
-    string = string + index - 1;
+    int index = 0;
+    int size = 0;
+    while ( *(string+(index)) == ' ') index++; // removing spaces from front
+
+    while ( *(string+index) )
+    {
+        *(string+size) = *(string+index);
+        index++;
+        size++;
+    }
+
+    *(string+size) = '\0';
     return string;
 }
 
-int stringLenth(const String CString){
-    if(CString == NULL) return 0;
-    if (*CString) return 1 + stringLenth(CString+1);
-    else return 0;
+STRING_STD_C size_t stringLenth(const String CString){
+    if(IsStringEmpty(CString)) return -1;
+    else return 1 + stringLenth(CString+1);
 }
 
-String StringCopy(String __src,String __dst, int __size){
-    __dst = (String)realloc(__dst, __size);
-    for (int i = 0; i < __size; i++)
-    {
-        *(__dst+i) = *(__src+i);
-    }
+STRING_STD_C String StringCopy(String __src, String __dst, int __size){
+    __dst = (String)malloc(__size);
+    for (int i = 0; i < __size; i++) *(__dst+i) = *(__src+i); 
     return __dst;
-    // memcpy(__dst, __src, __size);
 }
 
-short IsStringEmpty(String __string){
-    return (*__string == NULL);
+STRING_STD_C short IsStringEmpty(String __string){
+    return (*__string == '\0');
 }

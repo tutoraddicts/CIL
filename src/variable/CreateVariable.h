@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Definations.h"
+#include "../definations.h"
 #include "../Util/Util.h"
 
 /*
@@ -13,6 +13,4 @@
     4. string
  */
 
-void CreateVariable(String, String, int);
-StringVars* CreateStringVars();
-void IntVariable(String);
+void CreateVariable(String Varname, String data);
