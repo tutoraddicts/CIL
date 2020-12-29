@@ -1,22 +1,27 @@
-# extence-c
-Lol this is brocken now thinking to stop working on this because I want to work on a Json copy from scratch :(
+# Simple Interpreter
 
-Want to mixe up c and shell script which will look like shell script and act like kinda python and c++ hope will go well :);
+A simple Interpreter I don't know Why I am actually doing this :/
 
-How you can work in this ? 
+## How to use this 
 
-1. Fork the repository.
-2. Edite ec.c file as you want as the features you want into the language.
-3. Request pull into the project (I will check and aprove).
+	1. Fork the repository.
+	2. Build the project with ./build(only for Linux) script
 
-Want to test ? 
+### Test: 
 
-    1. Use open command promt or terminal run the command ./ec filename
+    1. Open command promt or terminal run the command ./ec example.ec
     2. filename will be the name of your text file
 
-What can you do right now ?
 
-    1. For now you have only print function to print some string in console
-        Syntax -> print "string" (/n to add next line and /t for tab)
+## What can you do right now ?
+
+    1. You can print any string in console
+        Syntax -> say "string" (/n to add next line and /t for tab)
+    2. You can create variables Sadly for now everything you create is string because I am dumb :(
+        Syntax -> Var_name = Value 
+    3. You can Print Variables too
+        Syntax -> say var_name
+        Syntax -> say "My variable" +var_name+ " Working"
+        Syntax -> say "My Variable" var_name " Working"
     
-Thanks for look over the repo :) Have a nice day
+Thanks for look over the repo :) Have a nice day ::heart::
