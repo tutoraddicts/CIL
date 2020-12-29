@@ -24,4 +24,4 @@ A simple Interpreter I don't know Why I am actually doing this :/
         Syntax -> say "My variable" +var_name+ " Working"
         Syntax -> say "My Variable" var_name " Working"
     
-Thanks for look over the repo :) Have a nice day ::heart::
+Thanks for look over the repo :) Have a nice day :heart:
