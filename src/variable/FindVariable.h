@@ -1,4 +1,4 @@
 #include "../definations.h"
-#include "../Util/string.h"
+#include "../Util/Util.h"
 
-String FindVar(String varname, int* index);
+variables* FindVar(String varname, int* index);

@@ -15,8 +15,10 @@ static void do_run(String data){
     String instruction_name = (String)malloc(sizeof(char)*100);
     String instruction = (String)malloc(sizeof(char)*512);
 
-    data = RemoveSpaces(data);
     int data_length = strlen(data);
+
+    *(data+data_length-1) = '\0';
+
     for (int count = 0; count < data_length; count++){
 
         if ( *(data+count) != ' ' ){

@@ -2,4 +2,4 @@
 #!/bin/zsh
 
 # ./src/identify_instruction/*.c ./src/predefined_functions/*.c
-gcc ./src/*.c ./src/*/*.c  -o ec
+gcc ./src/*.c ./src/*/*.c ./src/*/*/*.c  -o ec
