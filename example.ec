@@ -1,4 +1,4 @@
-test1 = -1
+test1 = -5
 test2 = "Hello World\n"
 test3 = 5.0
 
@@ -17,3 +17,9 @@ say "Value of Test 3 : float : Changes TO> " test3 "\n"
 say "Value of Test 2 : string : Changes TO> " test2
 
 say "Printing them all together : " test1+" :: "+test3+" :: "+test2 
+
+test1 = test3
+
+say "Value Transferred From Test 1 To Test 2 : " test1 "\n"
+
+say "Random Var : " test4

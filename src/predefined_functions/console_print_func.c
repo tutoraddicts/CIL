@@ -26,8 +26,10 @@ static int printChar(const String data, int index){
 
 static void PrintVariable(variables* _varToPrint){
 
-    if (!_varToPrint)
+    if (!_varToPrint){
         return;
+    }
+        
     int i;
     i = 0;
 

@@ -37,6 +37,13 @@ static variables* IsVarCreated(String Varname, variables* __var){
         return IsVarCreated(Varname, __var->next);
 }
 
+/**
+ * @brief Create a String Variable object
+ * 
+ * @param Varname 
+ * @param data 
+ * @return variables* 
+ */
 static variables* CreateStringVariable(String Varname, String data){
     // printf("(%s) : (%s)", Varname, data);
     variables *_temp_var = (variables*)malloc(sizeof(sizeof(variables)));
@@ -100,12 +107,62 @@ static variables* CreateIntVariable(String Varname, String data){
     i_data->data = StringToInt(data);
     // printf("%d\n", i_data->data);
     _temp_var->data = i_data;
-    // printf("%d\n", ((int_data*)_temp_var->data)->data);
+    // printf("(%s) : (%d)\n",_temp_var->name, ((int_data*)_temp_var->data)->data);
     _temp_var->type = Var_Type_Int;
 
     return _temp_var;
 }
 
+
+static void TransferData(String VarName, variables* existingVar){
+    // printf("transferring\n");
+    int i = 0;
+    variables* _temp = FindVar(VarName, &i);
+    if (!_temp) return;
+    // printf("transferring 2\n");
+    if (_temp->type != existingVar->type)
+    {
+        Warning("\nWarning : Wrong Type Conversion\n");
+        switch (_temp->type)
+        {
+        case 's':
+            ((string_data*)existingVar->data)->data = StringCopy(((string_data*)_temp->data)->data, ((string_data*)existingVar->data)->data, stringLenth(((string_data*)_temp->data)->data)-1);
+            break;
+        case 'i':
+            if(existingVar->type == 'f')
+                ((float_data*)existingVar->data)->data = ((int_data*)_temp->data)->data;
+            else
+                ((int_data*)existingVar->data)->data = ((int_data*)_temp->data)->data; 
+            break;
+        case 'f':
+            if(existingVar->type == 'i')
+                ((int_data*)existingVar->data)->data = ((float_data*)_temp->data)->data;
+            else 
+                ((float_data*)existingVar->data)->data = ((float_data*)_temp->data)->data;
+            break;
+        default:
+            break;
+        }
+
+    }else {
+        switch (_temp->type)
+        {
+        case 's':
+            ((string_data*)existingVar->data)->data = StringCopy(((string_data*)_temp->data)->data, ((string_data*)existingVar->data)->data, stringLenth(((string_data*)_temp->data)->data)-1);
+            break;
+        case 'i':
+            ((int_data*)existingVar->data)->data = ((int_data*)_temp->data)->data;
+            break;
+        case 'f':
+            ((float_data*)existingVar->data)->data = ((float_data*)_temp->data)->data;
+            break;
+        default:
+            break;
+        }
+    }
+    
+    // printf("transferring 3");
+}
 /**
  * @brief THis Function Will return Which Type of variable user wants
  * @param data 
@@ -113,7 +170,7 @@ static variables* CreateIntVariable(String Varname, String data){
  */
 static Vartype WhichTypeOfVar(String data){
     if (*data == '"')   return Var_Type_String;
-    else {
+    else if ((*data == '-') || (*data > 47 && *data < 58)){
         int i = 0;
         while ( data[i] )
         {
@@ -123,6 +180,8 @@ static Vartype WhichTypeOfVar(String data){
         
         return Var_Type_Int;
     }
+
+    return 0;
 }
 
 /*
@@ -132,6 +191,29 @@ void CreateVariable(String Varname, String data){
     
     data = IsThisAVar(data); // Cheacking if the instruction actually for Variable or not
     if ( data == NULL ) return;
+
+    if (last_node == NULL){
+
+        printf("Creating Fist Variable \n");
+        switch (WhichTypeOfVar(data))
+        {
+        case 's':
+            vars = CreateStringVariable(Varname, data);
+            break;
+        case 'i':
+            vars = CreateIntVariable(Varname, data);
+            break;
+        case 'f':
+            vars = CreateFloatVariable(Varname, data);
+            break;
+        default:
+            break;
+        }
+                
+        last_node = vars;
+        return;
+    }
+
     variables* existing_var = IsVarCreated(Varname, vars);
     if (  existing_var != NULL) // cheacking if the Variable Allready Created
     {
@@ -148,47 +230,27 @@ void CreateVariable(String Varname, String data){
             ((float_data*)existing_var->data)->data = StringToFloat(data);
             break;
         default:
+            TransferData(data, existing_var);
             break;
         }
         
         return;
     }
     else {
-        if (last_node == NULL){
-
-            switch (WhichTypeOfVar(data))
-            {
-            case 's':
-                vars = CreateStringVariable(Varname, data);
-                break;
-            case 'i':
-                vars = CreateIntVariable(Varname, data);
-                break;
-            case 'f':
-                vars = CreateFloatVariable(Varname, data);
-                break;
-            default:
-                break;
-            }
-                
-            last_node = vars;
-        }else {
-            switch (WhichTypeOfVar(data))
-            {
-            case 's':
-                last_node->next = CreateStringVariable(Varname, data);
-                break;
-            case 'i':
-                last_node->next = CreateIntVariable(Varname, data);
-                break;
-            case 'f':
-                last_node->next = CreateFloatVariable(Varname, data);
-                break;
-            default:
-                break;
-            }
-            
+        switch (WhichTypeOfVar(data))
+        {
+        case 's':
+            last_node->next = CreateStringVariable(Varname, data);
+            break;
+        case 'i':
+            last_node->next = CreateIntVariable(Varname, data);
+            break;
+        case 'f':
+            last_node->next = CreateFloatVariable(Varname, data);
+            break;
+        default:
+            break;
+        }   
             last_node = last_node->next;
-        }
     }
 }

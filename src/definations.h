@@ -6,10 +6,11 @@
 #pragma once
 
 // Error Massages
-EC_DEFINATIONS static const String no_args = "No File Inserted\n";
-EC_DEFINATIONS static const String wrong_extension = "Use .ec in the end of the file my boy :)\n";
-EC_DEFINATIONS static const String no_such_file = "There is no file with such name\n";
+EC_DEFINATIONS static const String no_args = "ERROR : No File Inserted\n";
+EC_DEFINATIONS static const String wrong_extension = "ERROR : Use .ec in the end of the file my boy :)\n";
+EC_DEFINATIONS static const String no_such_file = "ERROR : There is no file with such name\n";
 
+EC_DEFINATIONS static const String no_var_found = "WARNING : No Variable Found Witch Such Name";
 // Names
 EC_DEFINATIONS static const String extension_name = ".ec";
 EC_DEFINATIONS static const String console_print = "say"; // print data

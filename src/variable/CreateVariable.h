@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../definations.h"
+#include "FindVariable.h"
 #include "../Util/Util.h"
 
 /*

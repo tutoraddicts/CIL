@@ -56,7 +56,7 @@ static int is_extension_correct(String file_name){
 int main(int args, String *file_name) {
 
     if (args < 2) return printf(no_args);
-    if ( !is_extension_correct(file_name[1]) ) return printf(wrong_extension);
+    if ( !is_extension_correct(file_name[1]) ) return Error(wrong_extension);
 
     FILE *pToFile = fopen(file_name[1], "r");
 
@@ -68,7 +68,6 @@ int main(int args, String *file_name) {
 	{
         do_run(data);
     }
-    
 
     fclose(pToFile);
     free(data);
