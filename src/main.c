@@ -19,7 +19,8 @@ static void do_run(String data){
 
     *(data+data_length-1) = '\0';
 
-    for (int count = 0; count < data_length; count++){
+    for (int count = 0; count < data_length; count++)
+    {
 
         if ( *(data+count) != ' ' ){
             *(instruction_name+count) = *(data+count);

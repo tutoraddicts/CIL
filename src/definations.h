@@ -15,18 +15,27 @@ EC_DEFINATIONS static const String no_var_found = "WARNING : No Variable Found W
 EC_DEFINATIONS static const String extension_name = ".ec";
 EC_DEFINATIONS static const String console_print = "say"; // print data
 
-EC_DEFINATIONS typedef enum function_Indexes funcIndex;
+EC_DEFINATIONS typedef enum function_Indexes funcIndex; // index for predefined Function
+EC_DEFINATIONS typedef enum instruction_index incIndex; // index for instructions
+
 EC_DEFINATIONS typedef char Vartype;
-EC_DEFINATIONS typedef struct variables variables;
-EC_DEFINATIONS typedef struct int_data int_data;
-EC_DEFINATIONS typedef struct float_data float_data;
-EC_DEFINATIONS typedef struct string_data string_data;
+
+EC_DEFINATIONS typedef struct variables variables; // all type of created Variables
+EC_DEFINATIONS typedef struct int_data int_data; // integer type of data
+EC_DEFINATIONS typedef struct float_data float_data; // float type of data
+EC_DEFINATIONS typedef struct string_data string_data; // string type of data you can also store char data too
 
 EC_DEFINATIONS enum function_Indexes{
     INVALID_FUNCTION = -1,
     console_print_function = 0,
 };
 
+EC_DEFINATIONS enum instruction_index{
+    ADDITION,
+    SUBTRACTION,
+    DIVISION,
+    MULTIPLICATION,
+};
 /*
  * Charecter to identify the variable Type
  * f -> for a float type variable

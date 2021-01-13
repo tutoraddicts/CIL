@@ -22,4 +22,9 @@ test1 = test3
 
 say "Value Transferred From Test 1 To Test 2 : " test1 "\n"
 
-say "Random Var : " test4
+say "This variable is not created : " test4
+
+say "Test4 created: "
+
+test4 = test2
+say test4
