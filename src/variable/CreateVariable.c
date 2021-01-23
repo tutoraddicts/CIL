@@ -220,8 +220,10 @@ static Vartype WhichTypeOfVar(String data){
     return 0;
 }
 
-/*
- * Create Your Variable Really Quick or just change the value of existing Variable
+/**
+ * @brief Create Your Variable Really Quick or just change the value of existing Variable
+ * @param Varname variable Name
+ * @param data data related to variable
  */
 void CreateVariable(String Varname, String data){
     

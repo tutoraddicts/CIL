@@ -25,6 +25,8 @@ EC_DEFINATIONS typedef struct int_data int_data; // integer type of data
 EC_DEFINATIONS typedef struct float_data float_data; // float type of data
 EC_DEFINATIONS typedef struct string_data string_data; // string type of data you can also store char data too
 
+EC_DEFINATIONS typedef struct code_mem code_mem;
+
 EC_DEFINATIONS enum function_Indexes{
     INVALID_FUNCTION = -1,
     console_print_function = 0,
@@ -62,6 +64,17 @@ struct variables{
     Vartype type;
 };
 
+/**
+ * @brief This is the code memory stack where are storing the code in a array
+ * We do not need too big of data
+ * max line size will be 512 initially
+ */
+struct code_mem{
+    char** code;
+    size_t no_of_line;
+};
+
 extern variables* vars;
+extern code_mem* main_code;
 
 #endif
