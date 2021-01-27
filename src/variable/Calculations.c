@@ -25,10 +25,13 @@ static Vartype WhichTypeOfVar(String data){
 
 
 void* Do_Calculation(String data){
-    String Instruction = (String)malloc(sizeof(char)*100);
 
-    if (*data != '(')
+    data = RemoveSpaces(data);
+
+    if (*data != '(') //OP
         return;
+
+    String Instruction = (String)malloc(sizeof(char)*stringLenth(data));
 
     int i = 1;  
     while (*(data+i) != ')')

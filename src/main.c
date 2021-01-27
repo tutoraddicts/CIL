@@ -4,52 +4,10 @@
 #include "predefined_functions/predefined_functions.h"
 #include "Util/Util.h"
 #include "variable/CreateVariable.h"
-
+#include "live_enviornment/live_enviornment.h"
+#include "do_run.h"
 
 code_mem* main_code;
-
-/*
- do_run is the function where actual work going on so if you want to change anythin look into
- do_run you can skip main function
-*/
-static void do_run(String data){
-
-    String instruction_name = (String)malloc(sizeof(char)*100);
-    String instruction = (String)malloc(sizeof(char)*512);
-
-    int data_length = strlen(data);
-
-    *(data+data_length-1) = '\0';
-
-    for (int count = 0; count < data_length; count++)
-    {
-
-        if ( *(data+count) != ' ' ){
-            *(instruction_name+count) = *(data+count);
-        }else {
-            int size = 0;
-            while ( count < data_length )
-            {
-                *(instruction+size) = *(data+count);
-                count++;
-                size++;
-            }
-            instruction = RemoveSpaces(instruction);
-            break;
-        }
-    }
-    
-    switch ( identify_instruction(instruction_name) )
-	{
-		case INVALID_FUNCTION:
-            CreateVariable(instruction_name, instruction);
-		    break;
-		case console_print_function:
-			console_print_func(instruction);
-		    break;
-	}
-
-}
 
 /**
  * @brief Cheking if the extension of our file is correct
@@ -75,14 +33,13 @@ static int store_code(char* line){
     if (!main_code){
         main_code = (code_mem*)malloc(sizeof(code_mem)); 
     }
-    if (main_code->no_of_line == 0){
-        main_code->code = (char**)malloc(sizeof(char*));
-    }
-    main_code = (code_mem*)malloc(sizeof(code_mem)); 
-    main_code->code = (char**)realloc(main_code->code, sizeof(char*)*(main_code->no_of_line+1) );
-    *(main_code->code+main_code->no_of_line) = (char*)malloc(sizeof(char)*line_max_size);
 
-    StringCopy(line, *(main_code->code+main_code->no_of_line), stringLenth(line));
+    int size_line = stringLenth(line);
+
+    main_code->code = (char**)realloc(main_code->code, sizeof(char*)*main_code->no_of_line+1);
+    main_code->code[main_code->no_of_line] = (char*)malloc(sizeof(char)*size_line);
+    main_code->code[main_code->no_of_line] = StringCopy(line, main_code->code[main_code->no_of_line], size_line);
+
 
     main_code->no_of_line++;
 }
@@ -95,7 +52,7 @@ static int store_code(char* line){
  */
 int main(int args, String *file_name) {
 
-    if (args < 2) return printf(no_args);
+    if (args < 2) return  Error(no_args) & LiveEnviornment() ;
     if ( !is_extension_correct(file_name[1]) ) return Error(wrong_extension);
 
     FILE *pToFile = fopen(file_name[1], "r");
@@ -106,14 +63,10 @@ int main(int args, String *file_name) {
 
     while ( fgets( data, 512, pToFile) ) // Get input from the file line by line
 	{
-        store_code(data);
+        store_code(data); // storing the code will be usefull in future version
         do_run(data);
     }
 
-    printf("\nTotal number of codes %ld\n", main_code->no_of_line);
-    for (int i = 0; i < main_code->no_of_line; i++){
-        printf("%s", main_code->code[i]);
-    }
     fclose(pToFile);
     free(data);
 

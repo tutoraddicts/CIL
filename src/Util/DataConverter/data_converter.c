@@ -8,7 +8,7 @@ static int String_Length = 0;
 
 int StringToInt(const String Data){
     if (!Data){
-        printf("Error Wrong Data\n");
+        printf("Error No Data\n");
         return 0;
     }
         
@@ -30,17 +30,15 @@ int StringToInt(const String Data){
     int String_Length = stringLenth(Data)+1;
 
     for (i += 1; i < String_Length; i++){
-        if ( Data[i] < '0' && Data[i] > '9' ){
-            printf("Warning : This is not a number\n");
+        if ( Data[i] < '0' && Data[i] > '9' )
             break;
-        }else if ( Data[i] == '.'){
+        else if ( Data[i] == '.'){
             float_starting = i+1;
             break;
         }
             
-        
         res *= MulFactor;
-        res += ((int)Data[i])-48; 
+        res += Data[i]-48; 
     }
 
     // printf("%d\n", res);
@@ -50,8 +48,7 @@ int StringToInt(const String Data){
 
 float StringToFloat(String Data){
     float res = StringToInt(Data);
-
-
+    
     float _res = (Data[float_starting]-'0');
 
     // printf ("%f\n", _res);

@@ -5,7 +5,9 @@ STRING_STD_C String New_String(size_t size){
 }
 
 STRING_STD_C String RemoveSpaces(String string)
-{    
+{   
+    if (*string != ' ') return; // lively improvement :)
+
     int index = 0;
     int size = 0;
     while ( *(string+(index)) == ' ') index++; // removing spaces from front

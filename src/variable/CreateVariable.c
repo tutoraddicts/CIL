@@ -85,7 +85,7 @@ static variables* CreateFloatVariable(String Varname, String data){
 
     float_data* f_data = (float_data*)malloc(sizeof(float_data));
     f_data->data = StringToFloat(data);
-    _temp_var->data = f_data;
+    _temp_var->data = (void*)f_data;
     _temp_var->type = Var_Type_Float;
 
     return _temp_var;
@@ -109,8 +109,10 @@ static variables* CreateIntVariable(String Varname, String data){
 
     int_data* i_data = (int_data*) malloc(sizeof(int_data));
     i_data->data = StringToInt(data);
+
     // printf("%d\n", i_data->data);
-    _temp_var->data = i_data;
+
+    _temp_var->data = (void*)i_data;
     // printf("(%s) : (%d)\n",_temp_var->name, ((int_data*)_temp_var->data)->data);
     _temp_var->type = Var_Type_Int;
 
@@ -232,13 +234,14 @@ void CreateVariable(String Varname, String data){
 
     if (last_node == NULL){
 
-        printf("Creating Fist Variable \n");
+        // printf("Creating Fist Variable \n");
         switch (WhichTypeOfVar(data))
         {
         case 's':
             vars = CreateStringVariable(Varname, data);
             break;
         case 'i':
+            // printf("Creating Integer Variable");
             vars = CreateIntVariable(Varname, data);
             break;
         case 'f':
