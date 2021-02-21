@@ -33,5 +33,12 @@ STRING_STD_C String StringCopy(String __src,String __dst, int __size);
  Return 0 if NotEmpty
  */
 STRING_STD_C short IsStringEmpty(String __string);
+/**
+ * @brief Comparing strings 
+ * return 1 if same 0 if not same
+ * @param __string 
+ * @return STRING_STD_C 
+ */
+STRING_STD_C short Stringcomp(const String __str1,const String __str2);
 
 #endif

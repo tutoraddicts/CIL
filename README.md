@@ -4,12 +4,12 @@ A simple Interpreter I don't know Why I am actually doing this :/
 
 ## How to use this 
 
-	1. Fork the repository.
+	1. Clone the repository.
 	2. Build the project with ./build(only for Linux) script
 
 ### Test: 
 
-    1. Open command promt or terminal run the command ./ec example.ec
+    1. Open command prompt or terminal run the command ./ec example.ec
     2. filename will be the name of your text file
 
 

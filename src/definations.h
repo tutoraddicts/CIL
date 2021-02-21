@@ -9,6 +9,7 @@
 EC_DEFINATIONS static const String no_args = "ERROR : No File Inserted\n";
 EC_DEFINATIONS static const String wrong_extension = "ERROR : Use .ec in the end of the file my boy :)\n";
 EC_DEFINATIONS static const String no_such_file = "ERROR : There is no file with such name\n";
+EC_DEFINATIONS static const String wrong_syntex = "ERROR : Wrong Syntex";
 
 EC_DEFINATIONS static const String no_var_found = "WARNING : No Variable Found Witch Such Name";
 // Names
@@ -35,11 +36,17 @@ EC_DEFINATIONS enum function_Indexes{
 };
 
 EC_DEFINATIONS enum instruction_index{
-    ADDITION,
-    SUBTRACTION,
-    DIVISION,
-    MULTIPLICATION,
+    ADDITION = '+',
+    SUBTRACTION = '-',
+    DIVISION = '/',
+    MULTIPLICATION = '*',
 };
+
+EC_DEFINATIONS enum argument_index{
+    file_name = 1,
+    options = 2,
+};
+
 /*
  * Charecter to identify the variable Type
  * f -> for a float type variable
@@ -74,6 +81,7 @@ struct variables{
 struct code_mem{
     char** code;
     size_t no_of_line;
+    size_t program_counter;
 };
 
 extern variables* vars;

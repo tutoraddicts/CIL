@@ -8,4 +8,5 @@
  data is the data user want to print
  */
 PREDEFINED_FUNCTION_H void console_print_func(String data);
+PREDEFINED_FUNCTION_H int console_exit_func(String data);
 #endif

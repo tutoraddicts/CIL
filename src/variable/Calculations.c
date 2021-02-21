@@ -31,7 +31,8 @@ void* Do_Calculation(String data){
     if (*data != '(') //OP
         return;
 
-    String Instruction = (String)malloc(sizeof(char)*stringLenth(data));
+    int length = stringLenth(data);
+    String Instruction = (String)malloc(sizeof(char)*length);
 
     int i = 1;  
     while (*(data+i) != ')')
@@ -42,8 +43,16 @@ void* Do_Calculation(String data){
     *(Instruction+i) = '\0';
     Instruction = RemoveSpaces(Instruction);
     i = stringLenth(Instruction);
+    String vardata = (String)malloc(sizeof(char)*50);
     for (int j = 0; j < i ; j++){
-    
+        if (Instruction[j] == ADDITION );
+        else if ( Instruction[j] == SUBTRACTION );
+        else if ( Instruction[j] == DIVISION );
+        else if ( Instruction[j] == MULTIPLICATION );
+        else {
+            vardata[i];
+        }
+        
     }
 
 
