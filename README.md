@@ -9,8 +9,11 @@ A simple Interpreter I don't know Why I am actually doing this :/
 
 ### Test: 
 
-    1. Open command prompt or terminal run the command ./ec example.ec
+    1. Open command prompt or terminal run the command ./ec filename.ec
     2. filename will be the name of your text file
+ 
+### CLI :
+    1. Open CMD/Terminal run ./ec
 
 
 ## What can you do right now ?
@@ -18,10 +21,11 @@ A simple Interpreter I don't know Why I am actually doing this :/
     1. You can print any string in console
         Syntax -> say "string" (/n to add next line and /t for tab)
     2. You can create variables Sadly for now everything you create is string because I am dumb :(
-        Syntax -> Var_name = Value 
+        Syntax -> Var_name = Value
+	Syntax -> Var_name1 = Var_name 
     3. You can Print Variables too
         Syntax -> say var_name
         Syntax -> say "My variable" +var_name+ " Working"
         Syntax -> say "My Variable" var_name " Working"
     
-Thanks for look over the repo :) Have a nice day :heart:
+Thanks
