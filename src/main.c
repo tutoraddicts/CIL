@@ -22,7 +22,10 @@ static int store_code(char* line);
  */
 int main(int args, String *arguments) {
 
-    if (args < 2) return  Error(no_args, -1) & LiveEnviornment() ;
+    if (args < 2){
+        Error(no_args, -1) 
+        return LiveEnviornment() ;
+    } 
 
     for (int i = 1; i < args; i++){
         switch (i)
@@ -31,7 +34,7 @@ int main(int args, String *arguments) {
             if ( !is_extension_correct(arguments[1]) ) return Error(wrong_extension, -1);
             break;
         case 2:
-            // convert this program into C program 
+            if ( !strcmp(arguments[2], "-g") ) printf("Generating C programe");
             break;
         default:
             break;

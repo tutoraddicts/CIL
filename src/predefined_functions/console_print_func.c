@@ -47,6 +47,11 @@ static void PrintVariable(variables* _varToPrint){
     }
 }
 
+// print the string and return the the last index;
+static int print_string(const char* __string, int index){
+    return 0;
+}
+
 PREDEFINED_FUNCTION_H void console_print_func(String data){
 
     int data_length = strlen(data)-1;
@@ -58,7 +63,14 @@ PREDEFINED_FUNCTION_H void console_print_func(String data){
         case '"':
             ++i;
             while ( *(data+i) != '"' )
-                i = printChar(data, i);
+                if ( i < data_length )
+                    i = printChar(data, i);
+                else{
+                    break; 
+                    Error(" %c Error in line No : %ld", '"', main_code->program_counter+1);
+                }
+                    
+                    
             break;
         case ' ':
             break;

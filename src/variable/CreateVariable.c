@@ -171,7 +171,7 @@ static void TransferData(const String data, String VarName, variables* existingV
     else if (_temp->type != existingVar->type)
     {
         // printf("type convertion\n");
-        Warning("\nWarning : Wrong Type Conversion : line : %d\n", main_code->program_counter);
+        Warning(Wrong_type_convertion, main_code->program_counter);
         switch (existingVar->type)
         {
         case 's':
@@ -193,9 +193,9 @@ static void TransferData(const String data, String VarName, variables* existingV
         case 'f':
             
             if ( _temp->type == 's')
-                ((float_data*)existingVar->data)->data = (float)(int)((string_data*)_temp->data)->data;
+                ((float_data*)existingVar->data)->data = (int)((string_data*)_temp->data)->data;
             else if ( _temp->type == 'i')
-                ((float_data*)existingVar->data)->data = (float)((int_data*)_temp->data)->data;
+                ((float_data*)existingVar->data)->data = ((int_data*)_temp->data)->data;
                 
             break;
 

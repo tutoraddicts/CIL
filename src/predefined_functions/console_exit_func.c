@@ -4,7 +4,7 @@
 
 PREDEFINED_FUNCTION_H int console_exit_func(String data){
     if (*data != '(')
-        return Error(wrong_syntex, main_code->program_counter) & printf(" : You Might miss type : exit(0)");
+        return Error(wrong_syntex, main_code->program_counter) printf(" : You Might miss type : exit(0)");
 
     int size = strlen(data)-1;
 

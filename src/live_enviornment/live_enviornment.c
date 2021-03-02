@@ -31,14 +31,15 @@ LIVE_ENVIORNMENT_H int LiveEnviornment(){
     static const char* Massage= "This is a live Enviornment for EC so use"
                             "it wisely and remember my last name.And "
                             "also remember exit to exit the CLI\n";
-    printf(Massage);
+    printf("%s", Massage);
     String data = (String)malloc(sizeof(char)*512);
 
     while (1){
         printf(">> ");
         fgets(data, 512, stdin);
-        do_run(data);
         store_code(data);
+        do_run(main_code->code[main_code->program_counter++]);
+        // do_run(data);
     }
     
     return -1;

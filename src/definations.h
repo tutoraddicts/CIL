@@ -10,8 +10,11 @@ EC_DEFINATIONS static const String no_args = "ERROR : No File Inserted\n";
 EC_DEFINATIONS static const String wrong_extension = "ERROR : Use .ec in the end of the file my boy :)\n";
 EC_DEFINATIONS static const String no_such_file = "ERROR : There is no file with such name\n";
 EC_DEFINATIONS static const String wrong_syntex = "ERROR : Wrong Syntex";
+EC_DEFINATIONS static const String no_variable = "\nError : No Variable Found With Such name\n";
 
 EC_DEFINATIONS static const String no_var_found = "WARNING : No Variable Found Witch Such Name";
+EC_DEFINATIONS static const String Wrong_type_convertion = "\nWarning : Wrong Type Conversion : line : %d\n";
+EC_DEFINATIONS static const String tip = "Tip :: Make Sure You have a Line Break at the end if this occurs at the last line of the code\n";
 // Names
 EC_DEFINATIONS static const String extension_name = ".ec";
 EC_DEFINATIONS static const String console_print = "say"; // print data

@@ -36,7 +36,7 @@ variables* FindVar(const String data, int* index)
         else break; 
     }
     
-    Error("\nError : No Variable Found With Such name\n", 0);
-    Warning("Tip :: Make Sure You have a Line Break at the end if this occurs at the last line of the code\n", 0);
+    Error(no_variable, 0);
+    Warning(tip, 0);
     return NULL;
 }
