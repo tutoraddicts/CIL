@@ -16,16 +16,16 @@ A simple Interpreter I don't know Why I am actually doing this :/
     1. Open CMD/Terminal run ./ec
 
 
-## What can you do right now ?
+## What is the Progress ?
 
-    1. You can print any string in console
-        Syntax -> say "string" (/n to add next line and /t for tab)
-    2. You can create variables Sadly for now everything you create is string because I am dumb :(
-        Syntax -> Var_name = Value
-	Syntax -> Var_name1 = Var_name 
-    3. You can Print Variables too
-        Syntax -> say var_name
-        Syntax -> say "My variable" +var_name+ " Working"
-        Syntax -> say "My Variable" var_name " Working"
+    1. How to Create Variables :(
+        Var1 = Value (data type will be automatically detected during initialisation)
+        Var2 = Var1
+
+    2. How To Print in console
+        say "Variable Data " Var1 " transfered to new Variable Var2\n" (\n to add next line and \t for tab)
+        say "Variable Data "+Var1+" transfered to new Variable Var2\n" (This is another way to write thiings > using +)
+    3. How to get input from user
+        get var1
     
-Thanks
+# Thanks
