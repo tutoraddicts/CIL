@@ -17,8 +17,6 @@ EC_DEFINATIONS static const String Wrong_type_convertion = "\nWarning : Wrong Ty
 EC_DEFINATIONS static const String tip = "Tip :: Make Sure You have a Line Break at the end if this occurs at the last line of the code\n";
 // Names
 EC_DEFINATIONS static const String extension_name = ".ec";
-EC_DEFINATIONS static const String console_print = "say"; // print data
-EC_DEFINATIONS static const String exit_ec = "exit"; 
 
 EC_DEFINATIONS typedef enum function_Indexes funcIndex; // index for predefined Function
 EC_DEFINATIONS typedef enum instruction_index incIndex; // index for instructions
@@ -32,9 +30,14 @@ EC_DEFINATIONS typedef struct string_data string_data; // string type of data yo
 
 EC_DEFINATIONS typedef struct code_mem code_mem;
 
+EC_DEFINATIONS static const String console_print = "say"; // print data
+EC_DEFINATIONS static const String console_input = "get"; // print data
+EC_DEFINATIONS static const String exit_ec = "exit"; 
+
 EC_DEFINATIONS enum function_Indexes{
     INVALID_FUNCTION = -1,
     console_print_function = 0,
+    console_input_function,
     exit_ec_function,
 };
 

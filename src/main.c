@@ -31,7 +31,9 @@ int main(int args, String *arguments) {
         switch (i)
         {
         case 1:
-            if ( !is_extension_correct(arguments[1]) ) return Error(wrong_extension, -1);
+            if ( !is_extension_correct(arguments[1]) ){
+                return Error(wrong_extension, -1);
+            }
             break;
         case 2:
             if ( !strcmp(arguments[2], "-g") ) printf("Generating C programe");
@@ -65,15 +67,17 @@ int main(int args, String *arguments) {
     //     // temp[strlen(temp)-1] = '\0';
     // }
     
-    printf("\n-------------------------------------------------------------\n\n");
+    printf("\n-------------------------------------------------------------\n");
     for ( main_code->program_counter = 0; main_code->program_counter < main_code->no_of_line; main_code->program_counter++){
-        do_run(main_code->code[main_code->program_counter]);
-        if ( !IsStringEmpty(main_code->code[main_code->program_counter]) )
+        if ( !IsStringEmpty(main_code->code[main_code->program_counter]) ){
+            do_run(main_code->code[main_code->program_counter]);
             free(main_code->code[main_code->program_counter]);
+        }
+            
     }
     printf("\n-------------------------------------------------------------\n");
-    free(main_code->code);
     free(main_code);
+    
 
     return 0;
 }
@@ -96,11 +100,20 @@ static int store_code(char* line){
     // line = RemoveSpaces(line);
     int size_line = strlen(line);
 
+    
+
     main_code->code = (char**)realloc(main_code->code, sizeof(char*)*main_code->no_of_line+1);
     main_code->code[main_code->no_of_line] = (char*)malloc(sizeof(char)*size_line);
     
+    if (size_line < 2) {
+        main_code->code[main_code->no_of_line] = "\n";
+        main_code->no_of_line++;
+        return;
+        
+    }
+    // printf("%s : %d\n",line, strlen(line));
     if ( !IsStringEmpty(line) ){
-        main_code->code[main_code->no_of_line] = StringCopy(line, main_code->code[main_code->no_of_line], size_line);
+        main_code->code[main_code->no_of_line] = StringCopyExcept(line, main_code->code[main_code->no_of_line], size_line, '#');
     }else {
         main_code->code[main_code->no_of_line] = "\0";
     }

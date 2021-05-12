@@ -12,25 +12,6 @@ static Vartype WhichTypeOfVar(String data);
  */
 
 /**
- * @brief Return the pointer of the data if it is a var
- * if not then return NULL;
- * @param data is the string of the code the user write
- */
-static String IsThisAVar(String data) {
-    
-    // printf("is this a var\n");
-    data = RemoveSpaces(data);
-    
-    if (*data=='='){
-        *data = ' ';
-        data = RemoveSpaces(data);
-        return data;
-    }else {
-        return NULL;
-    }
-}
-
-/**
  * @brief Will return the variable pointer if it finds a variable with same name
  * if not then will return new Var to store data;
  * @param Varname name of the variable
@@ -116,6 +97,8 @@ static variables* CreateFloatVariable(String Varname, String data){
 static variables* CreateIntVariable(String Varname, String data){
     variables *_temp_var = (variables*)malloc(sizeof(sizeof(variables)));
 
+    // printf("var_data : %s:", data);
+
     _temp_var->next = NULL;
 
     int name_size = strlen(Varname);
@@ -125,6 +108,7 @@ static variables* CreateIntVariable(String Varname, String data){
     _temp_var->name = StringCopy(Varname, _temp_var->name, name_size);
 
     int_data* i_data = (int_data*) malloc(sizeof(int_data));
+    // printf("data : %d:\n", StringToInt(data));
     i_data->data = StringToInt(data);
     _temp_var->data = (void*)i_data;
     _temp_var->type = Var_Type_Int;
@@ -253,8 +237,6 @@ static Vartype WhichTypeOfVar(String data){
  */
 void CreateVariable(String Varname, String data){
 
-    // printf("creating variable\n");
-    data = IsThisAVar(data); // Cheacking if the instruction actually for Variable or not
     if ( data == NULL ) return;
 
     if (last_node == NULL){
@@ -280,7 +262,7 @@ void CreateVariable(String Varname, String data){
 
     variables* existing_var = IsVarCreated(Varname, vars);
     // printf("done checking existing var\n");
-    if (  existing_var != NULL ) // cheacking if the Variable Allready Created
+    if (  existing_var != NULL ) // cheacking if the Variable Already Created
     {
         // printf("Found Existing Variable\n");
         switch ( WhichTypeOfVar(data) )

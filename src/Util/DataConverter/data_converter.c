@@ -26,8 +26,9 @@ int StringToInt(const String Data){
     }
 
     res = (Data[i]-48);
+    // printf("strlen :%d\n", stringLenth(Data));
 
-    int String_Length = stringLenth(Data)+1;
+    int String_Length = stringLenth(Data);
 
     for (i += 1; i < String_Length; i++){
         if ( Data[i] < '0' && Data[i] > '9' )
@@ -36,14 +37,16 @@ int StringToInt(const String Data){
             float_starting = i+1;
             break;
         }
-            
+        else
+            break;
+
         res *= MulFactor;
         res += Data[i]-48; 
     }
 
-    // printf("%d\n", res);
+    // printf("res :%d\n", res);
 
-    return res*sign;
+    return sign ? res : res*sign;
 }
 
 float StringToFloat(String Data){
@@ -64,7 +67,6 @@ float StringToFloat(String Data){
     }
 
     // printf ("%f\n", _res);
-
     res += _res/10;
     return res;
 }

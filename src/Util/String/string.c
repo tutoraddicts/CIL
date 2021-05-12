@@ -37,14 +37,27 @@ STRING_STD_C String StringCopy(String __src, String __dst, int __size)
     return __dst;
 }
 
+STRING_STD_C String StringCopyExcept(String __src,String __dst, int __size,char __exceptChar){
+     __dst = (String)malloc(__size);
+    for (int i = 0; i < __size; i++) {
+        if (*(__src+i) == __exceptChar){
+            *(__dst+i) = '\0';
+            return __dst;
+        }
+        else
+            *(__dst+i) = *(__src+i); 
+    }
+    return __dst;
+}
+
 STRING_STD_C short IsStringEmpty(String __string)
 {
-    return (*__string == '\0' || *__string == '\n');
+    return ( !*__string || *__string == '\0' || *__string == '\n');
 }
 
 STRING_STD_C short Stringcomp(const String __str1,const String __str2)
 {
-    if ( !*__str1 || !*__str2 ) return 0;
+    if ( !*__str1 || !*__str2 ) return 1;
     
     if ( *__str1 == *__str2){
         if ( *(__str1+1) && *(__str2+1) ){

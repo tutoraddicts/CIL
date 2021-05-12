@@ -27,6 +27,7 @@ STRING_STD_C size_t stringLenth( const String);
     __size > size of the src
  */
 STRING_STD_C String StringCopy(String __src,String __dst, int __size);
+STRING_STD_C String StringCopyExcept(String __src,String __dst, int __size,char __exceptChar);
 
 /*
  Return 1 if empty 
