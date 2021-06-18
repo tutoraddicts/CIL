@@ -29,7 +29,7 @@ void* Do_Calculation(String data){
     data = RemoveSpaces(data);
 
     if (*data != '(') //OP
-        return;
+        return 0;
 
     int length = stringLenth(data);
     String Instruction = (String)malloc(sizeof(char)*length);

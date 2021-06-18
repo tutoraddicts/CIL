@@ -32,7 +32,8 @@ int main(int args, String *arguments) {
         {
         case 1:
             if ( !is_extension_correct(arguments[1]) ){
-                return Error(wrong_extension, -1);
+                Error(wrong_extension, -1);
+                return 1;
             }
             break;
         case 2:
@@ -108,7 +109,7 @@ static int store_code(char* line){
     if (size_line < 2) {
         main_code->code[main_code->no_of_line] = "\n";
         main_code->no_of_line++;
-        return;
+        return 0;
         
     }
     // printf("%s : %d\n",line, strlen(line));
@@ -130,8 +131,8 @@ static int store_code(char* line){
  * @return int 
  */
 static int is_extension_correct(const String file_name){
-    // printf(file_name);
+    printf(file_name);
     // printf(file_name+strlen(file_name)-3);
-    if ( Stringcomp(file_name+strlen(file_name)-3, extension_name) ) return 1;
+    if ( Stringcomp(file_name+strlen(file_name)-8, extension_name) )  return 1;
     else return 0;
 }

@@ -31,13 +31,11 @@ int StringToInt(const String Data){
     int String_Length = stringLenth(Data);
 
     for (i += 1; i < String_Length; i++){
-        if ( Data[i] < '0' && Data[i] > '9' )
-            break;
-        else if ( Data[i] == '.'){
+        if ( Data[i] == '.'){
             float_starting = i+1;
             break;
         }
-        else
+        if ( Data[i] < '0' && Data[i] > '9' )
             break;
 
         res *= MulFactor;
@@ -70,3 +68,28 @@ float StringToFloat(String Data){
     res += _res/10;
     return res;
 }
+
+String IntToString(int Data){
+    int base = 10;
+    if (Data < 10){
+        return (char*)Data+48;
+    }
+
+    base *= 10;
+    char* __str = (char*)malloc(10);
+    while (Data > base)
+    {
+        base *= 10;
+    }
+
+    while (Data != 0)
+    {
+        int i = 0;
+        int temp = Data/base;
+        __str[i] = (char)temp+48;
+        Data = Data-temp;
+        i++;
+    }    
+}
+
+String FloatToString(int Data);

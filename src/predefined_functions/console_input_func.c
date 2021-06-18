@@ -23,7 +23,31 @@ static variables* IsVarCreated(String Varname, variables* __var){
 
 PREDEFINED_FUNCTION_H void console_get_func(String data){
 
-    variables* existing_var = IsVarCreated(data, vars);
+    char* var_name = (char*)malloc(50);
+
+    int i = 0;
+    while (data[i])
+    {
+        if (data[i] != ',' || data[i] != ' '){
+            var_name[i] = data[i];
+            i++;
+        }
+        else{
+            var_name[i] = '\0' ;
+            printf(":%s:\n", "going for second variable");
+            console_get_func(data+i+1);
+            break;
+        }
+        // else if ( IsStringEmpty(data+1) ) {
+        //     printf(":%s:\n", data);
+        //     console_get_func(data+1);
+        //     break;
+        // }
+        
+    }
+    
+
+    variables* existing_var = IsVarCreated(var_name, vars);
 
     if (existing_var != NULL){
         switch ( existing_var->type )
@@ -33,7 +57,6 @@ PREDEFINED_FUNCTION_H void console_get_func(String data){
             break;
         case 'i':
             scanf("%d", &((int_data*)existing_var->data)->data);
-            // printf(":%s:\n", data);
             break;
         case 'f':
             scanf("%f", &((float_data*)existing_var->data)->data);

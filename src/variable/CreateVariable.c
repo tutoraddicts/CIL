@@ -155,7 +155,7 @@ static void TransferData(const String data, String VarName, variables* existingV
     else if (_temp->type != existingVar->type)
     {
         // printf("type convertion\n");
-        Warning(Wrong_type_convertion, main_code->program_counter);
+        Warning(Wrong_type_convertion, main_code->program_counter+1);
         switch (existingVar->type)
         {
         case 's':

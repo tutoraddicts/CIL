@@ -10,4 +10,7 @@
 int StringToInt(String Data);
 float StringToFloat(String Data);
 
+String IntToString(int Data);
+String FloatToString(int Data);
+
 #endif

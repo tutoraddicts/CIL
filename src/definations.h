@@ -16,7 +16,7 @@ EC_DEFINATIONS static const String no_var_found = "WARNING : No Variable Found W
 EC_DEFINATIONS static const String Wrong_type_convertion = "\nWarning : Wrong Type Conversion : line : %d\n";
 EC_DEFINATIONS static const String tip = "Tip :: Make Sure You have a Line Break at the end if this occurs at the last line of the code\n";
 // Names
-EC_DEFINATIONS static const String extension_name = ".ec";
+EC_DEFINATIONS static const String extension_name = "main.icl";
 
 EC_DEFINATIONS typedef enum function_Indexes funcIndex; // index for predefined Function
 EC_DEFINATIONS typedef enum instruction_index incIndex; // index for instructions
